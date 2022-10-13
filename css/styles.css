@@ -9,10 +9,92 @@
 body {
   font-size: 0.94rem;
   font-family: "League Spartan", sans-serif;
+  line-height: 1.4;
   display: grid;
   place-content: center;
   min-height: 100vh;
-  padding: 2rem;
+  padding: 5rem;
   background-image: url("../images/bg-pattern-top-desktop.svg"), url("../images/bg-pattern-bottom-desktop.svg");
   background-repeat: no-repeat, no-repeat;
   background-position: top left, bottom right; }
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 4rem;
+  max-width: 70rem; }
+
+header {
+  width: 80%; }
+  header h1 {
+    font-size: 3.5rem;
+    color: #502050;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 0.85;
+    margin-bottom: 1.5rem; }
+  header p {
+    font-size: 1.1rem;
+    color: #937b92;
+    font-weight: 500; }
+
+aside {
+  justify-self: end;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem; }
+  aside > div {
+    background-color: #f7f2f8;
+    width: 80%;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; }
+    aside > div p {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #502050;
+      margin-left: 1rem; }
+    aside > div.rating-1 {
+      margin-right: 16%; }
+    aside > div.rating-2 {
+      margin-right: 8%; }
+
+section {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 2rem; }
+  section article {
+    background-color: #502050;
+    padding: 2.5rem 2rem;
+    border-radius: 0.5rem;
+    color: white; }
+    section article .intro {
+      display: grid;
+      grid-template-columns: 2.5rem auto;
+      grid-template-rows: repeat(2, 1fr);
+      column-gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 1.5rem; }
+      section article .intro img {
+        grid-row: span 2;
+        width: 2.5rem;
+        border-radius: 50%; }
+      section article .intro h2 {
+        font-size: inherit;
+        font-weight: 500;
+        line-height: 0.9;
+        align-self: end; }
+      section article .intro p {
+        color: #ee68a4; }
+    section article.review-2 {
+      margin-top: 1rem; }
+    section article.review-3 {
+      margin-top: 2rem; }
