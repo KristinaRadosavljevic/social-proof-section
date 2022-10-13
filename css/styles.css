@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap");
+@keyframes entering {
+  to {
+    opacity: 1;
+    transform: translate(0, 0); } }
+
 *,
 *::before,
 *::after {
@@ -26,7 +31,10 @@ main {
   max-width: 70rem; }
 
 header {
-  width: 80%; }
+  width: 80%;
+  transform: translate(-5rem, 0);
+  opacity: 0;
+  animation: entering 1s 0s ease-out forwards; }
   header h1 {
     font-size: 3.5rem;
     color: #502050;
@@ -61,9 +69,19 @@ aside {
       color: #502050;
       margin-left: 1rem; }
     aside > div.rating-1 {
-      margin-right: 16%; }
+      margin-right: 16%;
+      transform: translate(10rem, 0);
+      opacity: 0;
+      animation: entering 1s 0s ease-out forwards; }
     aside > div.rating-2 {
-      margin-right: 8%; }
+      margin-right: 8%;
+      transform: translate(12rem, 0);
+      opacity: 0;
+      animation: entering 1s 0.2s ease-out forwards; }
+    aside > div.rating-3 {
+      transform: translate(14rem, 0);
+      opacity: 0;
+      animation: entering 1s 0.4s ease-out forwards; }
 
 section {
   grid-column: span 2;
@@ -94,7 +112,17 @@ section {
         align-self: end; }
       section article .intro p {
         color: #ee68a4; }
+    section article.review-1 {
+      transform: translate(0, 5rem);
+      opacity: 0;
+      animation: entering 1s 0s ease-out forwards; }
     section article.review-2 {
-      margin-top: 1rem; }
+      margin-top: 1rem;
+      transform: translate(0, 6rem);
+      opacity: 0;
+      animation: entering 1s 0.2s ease-out forwards; }
     section article.review-3 {
-      margin-top: 2rem; }
+      margin-top: 2rem;
+      transform: translate(0, 7rem);
+      opacity: 0;
+      animation: entering 1s 0.4s ease-out forwards; }
