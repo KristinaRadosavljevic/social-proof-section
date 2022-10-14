@@ -11,8 +11,6 @@ This is a solution to the [Social proof section challenge on Frontend Mentor](ht
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
 
 ## Overview
@@ -29,8 +27,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [See the code on GitHub]()
-- Live Site URL: [View live site]()
+- Solution URL: [See the code on GitHub](https://github.com/KristinaRadosavljevic/social-proof-section)
+- Live Site URL: [View live site](https://social-proof-section-nine-red.vercel.app/)
 
 ## My process
 
@@ -38,12 +36,29 @@ Users should be able to:
 
 - Semantic HTML5 markup
 - CSS/Sass
+- CSS grid
+- Flexbox
+- Animations
+- Media queries
 
 ### What I learned
 
-### Continued development
+This project challenged me to get more comfortable with using grid layout, but I also threw in some animations and Sass mixins for fun. For example, it was very rewarding to find a way to reuse an animation with different parameters by using a mixin to implement it in various elements:
 
-### Useful resources
+```scss
+@keyframes entering {
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@mixin add-animation($position-x, $position-y, $delay: 0s) {
+  transform: translate($position-x, $position-y);
+  opacity: 0;
+  animation: entering 1s $delay ease-out forwards;
+}
+```
 
 ## Author
 
