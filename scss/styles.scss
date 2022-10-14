@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap");
+
+// Color variables
+$very-dark-magenta: hsl(300, 43%, 22%);
+$soft-pink: hsl(333, 80%, 67%);
+$light-magenta: hsl(290, 30%, 96%);
+$dark-grayish-magenta: hsl(303, 10%, 53%);
+$light-grayish-magenta: hsl(300, 24%, 96%);
+$white: hsl(0, 0%, 100%);
+
+// Animations
+@keyframes entering {
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+// Mixins
+@mixin add-animation($position-x, $position-y, $delay: 0s) {
+  transform: translate($position-x, $position-y);
+  opacity: 0;
+  animation: entering 1s $delay ease-out forwards;
+}
+
+// Global resets
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 0.94rem;
+  font-family: "League Spartan", sans-serif;
+  line-height: 1.4;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  padding: 5rem;
+  background-image: url("../images/bg-pattern-top-desktop.svg"),
+    url("../images/bg-pattern-bottom-desktop.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
+  row-gap: 4rem;
+  max-width: 70rem;
+}
+
+header {
+  width: 80%;
+  @include add-animation(-5rem, 0);
+
+  h1 {
+    font-size: 3.5rem;
+    color: $very-dark-magenta;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    line-height: 0.85;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: $dark-grayish-magenta;
+    font-weight: 500;
+  }
+}
+
+aside {
+  justify-self: end;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+
+  & > div {
+    background-color: $light-magenta;
+    width: 80%;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .stars {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 700;
+      color: $very-dark-magenta;
+    }
+
+    &.rating-1 {
+      margin-right: 16%;
+      @include add-animation(10rem, 0);
+    }
+
+    &.rating-2 {
+      margin-right: 8%;
+      @include add-animation(12rem, 0, 0.2s);
+    }
+
+    &.rating-3 {
+      @include add-animation(14rem, 0, 0.4s);
+    }
+  }
+}
+
+section {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  gap: 2rem;
+
+  article {
+    background-color: $very-dark-magenta;
+    padding: 2.5rem 2rem;
+    border-radius: 0.5rem;
+    color: $white;
+
+    .intro {
+      display: grid;
+      grid-template-columns: 2.5rem auto;
+      grid-template-rows: repeat(2, 1fr);
+      column-gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      img {
+        grid-row: span 2;
+        width: 2.5rem;
+        border-radius: 50%;
+      }
+
+      h2 {
+        font-size: inherit;
+        font-weight: 500;
+        line-height: 0.9;
+        align-self: end;
+      }
+
+      p {
+        color: $soft-pink;
+      }
+    }
+
+    &.review-1 {
+      @include add-animation(0, 5rem);
+    }
+
+    &.review-2 {
+      margin-top: 1rem;
+      @include add-animation(0, 6rem, 0.2s);
+    }
+
+    &.review-3 {
+      margin-top: 2rem;
+      @include add-animation(0, 7rem, 0.4s);
+    }
+  }
+}
+
+// Remove animations for users that prefer not to see them
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+  }
+}
+
+// Media queries
+@media (max-width: 1000px) {
+  main {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+    max-width: 70rem;
+  }
+
+  header {
+    @include add-animation(0, -5rem);
+    text-align: center;
+    justify-self: center;
+  }
+
+  aside {
+    justify-self: center;
+    max-width: 35rem;
+    align-items: center;
+    text-align: center;
+
+    & > div {
+      margin-right: 0 !important;
+    }
+  }
+
+  section {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+    max-width: 40rem;
+    justify-self: center;
+    gap: 1.5rem;
+
+    article {
+      margin-top: 0 !important;
+
+      &.review-1 {
+        @include add-animation(-5rem, 0);
+      }
+
+      &.review-2 {
+        @include add-animation(-6rem, 0, 0.2s);
+      }
+
+      &.review-3 {
+        @include add-animation(-7rem, 0, 0.4s);
+      }
+    }
+  }
+}
+
+@media (max-width: 675px) {
+  body {
+    padding: 4rem 1.5rem;
+    background-image: url("../images/bg-pattern-top-mobile.svg"),
+      url("../images/bg-pattern-bottom-mobile.svg");
+  }
+
+  main {
+    row-gap: 2rem;
+  }
+
+  header {
+    width: 100%;
+
+    h1 {
+      font-size: 2.6rem;
+    }
+  }
+
+  aside > div {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  section article {
+    padding: 1.5rem;
+  }
+}
